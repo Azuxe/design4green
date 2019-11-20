@@ -4,93 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51967ac6e74a05421db3f9b5eca4f60c",
+    "content-hash": "1cfad936c7c83f970f409e94faf09e4e",
     "packages": [
-        {
-            "name": "frameworks/jquery",
-            "version": "2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/frameworks/jquery.git",
-                "reference": "ef9c4fe9fcb23914bba6ec6d32c556e4a38a0fd9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/frameworks/jquery/zipball/ef9c4fe9fcb23914bba6ec6d32c556e4a38a0fd9",
-                "reference": "ef9c4fe9fcb23914bba6ec6d32c556e4a38a0fd9",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "jQuery JavaScript Library",
-            "homepage": "http://jquery.com",
-            "time": "2015-10-09T00:55:51+00:00"
-        },
-        {
-            "name": "phpmv/php-mv-ui",
-            "version": "2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpMv/phpMv-UI.git",
-                "reference": "5f0b056d58be026081e363cd2ecc4f78a61f04b9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpMv/phpMv-UI/zipball/5f0b056d58be026081e363cd2ecc4f78a61f04b9",
-                "reference": "5f0b056d58be026081e363cd2ecc4f78a61f04b9",
-                "shasum": ""
-            },
-            "require": {
-                "frameworks/jquery": "~2.1",
-                "php": ">7.0"
-            },
-            "suggest": {
-                "components/jqueryui": "~1.11",
-                "fomantic/ui": "~2.7.8",
-                "twitter/bootstrap": "~3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ajax\\": "Ajax/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Jean-Christophe HERON",
-                    "email": "myaddressmail@gmail.com",
-                    "role": "Lead developer"
-                }
-            ],
-            "description": "A JQuery and UI library for php and php MVC frameworks",
-            "keywords": [
-                "codeigniter",
-                "framework",
-                "jQuery UI",
-                "jquery",
-                "laravel",
-                "phalcon",
-                "php",
-                "semantic ui",
-                "symfony",
-                "twitter bootstrap",
-                "ubiquity",
-                "yii"
-            ],
-            "time": "2019-11-17T22:08:23+00:00"
-        },
         {
             "name": "phpmv/ubiquity",
             "version": "2.3.2",
@@ -374,6 +289,29 @@
             "time": "2019-02-09T13:11:36+00:00"
         },
         {
+            "name": "frameworks/jquery",
+            "version": "2.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/frameworks/jquery.git",
+                "reference": "ef9c4fe9fcb23914bba6ec6d32c556e4a38a0fd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/frameworks/jquery/zipball/ef9c4fe9fcb23914bba6ec6d32c556e4a38a0fd9",
+                "reference": "ef9c4fe9fcb23914bba6ec6d32c556e4a38a0fd9",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "time": "2015-10-09T00:55:51+00:00"
+        },
+        {
             "name": "mindplay/annotations",
             "version": "1.3.1",
             "source": {
@@ -500,6 +438,68 @@
                 "psr-3"
             ],
             "time": "2019-11-13T10:00:05+00:00"
+        },
+        {
+            "name": "phpmv/php-mv-ui",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpMv/phpMv-UI.git",
+                "reference": "5f0b056d58be026081e363cd2ecc4f78a61f04b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpMv/phpMv-UI/zipball/5f0b056d58be026081e363cd2ecc4f78a61f04b9",
+                "reference": "5f0b056d58be026081e363cd2ecc4f78a61f04b9",
+                "shasum": ""
+            },
+            "require": {
+                "frameworks/jquery": "~2.1",
+                "php": ">7.0"
+            },
+            "suggest": {
+                "components/jqueryui": "~1.11",
+                "fomantic/ui": "~2.7.8",
+                "twitter/bootstrap": "~3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ajax\\": "Ajax/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jean-Christophe HERON",
+                    "email": "myaddressmail@gmail.com",
+                    "role": "Lead developer"
+                }
+            ],
+            "description": "A JQuery and UI library for php and php MVC frameworks",
+            "keywords": [
+                "codeigniter",
+                "framework",
+                "jQuery UI",
+                "jquery",
+                "laravel",
+                "phalcon",
+                "php",
+                "semantic ui",
+                "symfony",
+                "twitter bootstrap",
+                "ubiquity",
+                "yii"
+            ],
+            "time": "2019-11-17T22:08:23+00:00"
         },
         {
             "name": "phpmv/ubiquity-dev",

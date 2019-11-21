@@ -1,0 +1,113 @@
+.top_header {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+	width: 100%;
+	padding: 10px 150px;
+	box-shadow: 0px -4px 25px 0px rgba(0, 0, 0, 0.75);
+	background-color: #121212;
+
+	.header_logo {
+		width: 140px;
+		display: block;
+    }
+    
+    #_userInfo{
+        display: flex;
+        align-items: baseline;
+
+        .username{
+            margin-right: 10px;
+            text-transform: capitalize;
+        }
+
+        .log_btn{
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 5px 10px 10px 10px;
+
+            a{
+                color: #ddd;
+                text-decoration: none;
+            }
+
+            &:hover{
+                cursor: pointer;
+                background: #ddd;
+                a {color: #121212;}
+            }
+        }
+    }
+
+	@media only screen and (max-width: 600px) {
+        padding: 10px 20px;
+
+		.header_logo {
+			width: 25%;
+		}
+	}
+}
+
+/* Page Affichage Consommation Utilisateur */
+.page_conso {
+	display: flex;
+	flex-direction: column;
+	min-height: 80vh;
+	padding: 40px 150px;
+
+	.page_title {
+		font-size: 2em;
+		letter-spacing: 0.1em;
+		margin-bottom: 1em;
+	}
+
+	.main_content {
+		display: flex;
+		width: 95%;
+
+		.info_container {
+			display: inherit;
+			flex-direction: column;
+			width: 25%;
+			border-right: 1px solid #DDD;
+
+			.info_title {
+				display: inherit;
+				align-items: center;
+                margin-bottom: 1em;
+                font-size: 1.8em;
+                line-height: 17px;
+
+				img {
+					display: block;
+					width: 30px;
+					margin-right: 10px;
+				}
+            }
+            
+            .info_content{
+                p{
+                    margin: .67em 0 .3em 0;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 600px) {
+        align-items: center;
+
+        .main_content {
+            flex-direction: column;
+            justify-content: center;
+
+            .info_container{
+                width: 100%;
+                border-right: none;
+                padding-bottom: 15px;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #DDD;
+
+            }
+        }
+    }
+}

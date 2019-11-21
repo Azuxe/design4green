@@ -1,53 +1,60 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% block body %}
 
-<head>
-    <title>La consommation du logement</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../../public/assets/css/global.css">
-    <link rel="stylesheet" href="../../../public/assets/css/global.css">
-    <link rel="stylesheet" href="../../../public/assets/css/styleUtilisateur.css">
-</head>
+<!-- HOUSE INFO PART -->
+<div class="page_conso">
 
-<body>
-    <header>
-        <img src="../../../public/assets/img/logo_triangles.svg" alt="Logo" id="logoHeader">
-    </header>
-    <!-- HOUSE INFO PART -->
-    <h1>CONSOMMATION DU LOGEMENT</h1>
-    <section id="houseInfo">
-        <h2>MON LOGEMENT</h2>
-        <section id="userInfo">
-            <img src="../../../public/assets/img/house_ico.svg" alt="Icone informations logements">
-            <div id="userTextInfo">
+    <div class="page_title">
+        <h1>Ma consommation</h1>
+    </div>
+
+    <section class="main_content">
+
+        <section class="info_container">
+
+            <div class="info_title">
+                <img src="../../../public/assets/img/house_ico.svg" alt="Icone informations logements">
+                <h2>Mon logement</h2>
+            </div>
+
+            <div class="info_content">
                 <h3>Propriétaire</h3>
                 <p id="name">Raphaël MARZAT</p>
                 <p id="company">La Rochelle Université</p>
                 <p id="city">{{ logement.ville }}</p>
+
+                <details>
+                    <summary>Plus d'infos</summary>
+                    <p id="address"><strong>Adresse :</strong> {{ logement.nb_voie }} {{ logement.voie }},
+                        {{ logement.code_postal }}, {{ logement.ville }}</p>
+                    <p id="area"><strong>Surface :</strong> {{ logement.surface }}m² </p>
+                    <p id="roomNbr"><strong>Nombre de pièces :</strong>{{ logement.pieces }} </p>
+                    <p id="constructYear"><strong>Année de construction :</strong> {{ logement.annee_construction }}
+                    </p>
+                    <p id="energyType"><strong>Type de Chauffage :</strong> {{ logement.chauffage }} </p>
+                </details>
+
             </div>
         </section>
-        <details id="userDetails">
-            <summary>Plus d'infos</summary>
-            <p id="address"><strong>Adresse :</strong> {{ logement.nb_voie }}  {{ logement.voie }}, {{ logement.code_postal }}, {{ logement.ville }}</p>
-            <p id="area"><strong>Surface :</strong> {{ logement.surface }}m² </p>
-            <p id="roomNbr"><strong>Nombre de pièces :</strong>{{ logement.pieces }} </p>
-            <p id="constructYear"><strong>Année de construction :</strong> {{ logement.annee_construction }} </p>
-            <p id="energyType"><strong>Type de Chauffage :</strong> {{ logement.chauffage }} </p>
-        </details>
-    </section>
-    <hr>
-    <!-- GRAPH PART -->
-    <section>
-        <h2>MA CONSOMMATION</h2>
-        <button>ToggleButton (Graph/Table) to be implemented</button>
-        <div class="grapheConsommationMaison">
-        </div>
-    </section>
-    <footer>
-        <p>Conditions d'utilisation</p>
-        <p>Nous contacter</p>
-        <p>...</p>
-    </footer>
-</body>
 
-</html>
+        <!-- GRAPH PART -->
+        <section>
+            <!-- <h2>MA CONSOMMATION</h2> -->
+            <button>ToggleButton (Graph/Table) to be implemented</button>
+            <div class="grapheConsommationMaison">
+                {% for conso in foyer.consommations %}
+                <p>{{conso.kwh}}</p>
+                {% endfor %}
+            </div>
+        </section>
+
+    </section>
+
+
+</div>
+<footer>
+    <p>Conditions d'utilisation</p>
+    <p>Nous contacter</p>
+    <p>...</p>
+</footer>
+
+{% endblock %}

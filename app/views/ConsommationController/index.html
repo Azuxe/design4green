@@ -42,7 +42,6 @@
             <button>ToggleButton (Graph/Table) to be implemented</button>
             <div class="grapheConsommationMaison">
                     {% for conso in logement.consommations %}
-                    <p>{{ conso.kwh }}</p>
                     <div class="ct-chart" data-conso="{{ conso.kwh }}" data-date="{{ conso.date_releve }}">
                     </div>
                     {% endfor %}

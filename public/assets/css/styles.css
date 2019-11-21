@@ -58,7 +58,6 @@
 }
 .page_conso .main_content {
   display: flex;
-  width: 95%;
 }
 .page_conso .main_content .info_container {
   display: inherit;
@@ -81,9 +80,27 @@
 .page_conso .main_content .info_container .info_content p {
   margin: 0.67em 0 0.3em 0;
 }
+.page_conso .main_content .graphs_container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  padding: 0 15px;
+  border: 1px solid red;
+}
+.page_conso .main_content .graphs_container .toggleBtn {
+  width: 250px;
+}
+.page_conso .main_content .graphs_container .grapheConsommationMaison {
+  display: flex;
+  width: 100%;
+}
+.page_conso .main_content .graphs_container .grapheConsommationMaison .hiddenValues, .page_conso .main_content .graphs_container .grapheConsommationMaison .hiddenValues2 {
+  display: none;
+}
 @media only screen and (max-width: 600px) {
   .page_conso {
     align-items: center;
+    padding: 40px 20px;
   }
   .page_conso .main_content {
     flex-direction: column;

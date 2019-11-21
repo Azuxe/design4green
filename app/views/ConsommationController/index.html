@@ -37,14 +37,25 @@
         </section>
 
         <!-- GRAPH PART -->
-        <section>
+        <section class="graphs_container">
             <!-- <h2>MA CONSOMMATION</h2> -->
+<<<<<<< HEAD
             <button>ToggleButton (Graph/Table) to be implemented</button>
             <div id="grapheConsommationMaison">
                     {% for conso in logement.consommations %}
                     <div class="ct-chart" data-conso="{{ conso.kwh }}" data-date="{{ conso.date_releve }}">
                     </div>
                     {% endfor %}
+=======
+            <button class="toggleBtn">ToggleButton (Graph/Table)</button>
+            <div class="grapheConsommationMaison">
+
+                <form class="hiddenValues" data-consos="{{logement.consommations | join(', ')}}">
+                <form class="hiddenValues2" data-dates="{{dates | join(', ')}}">
+
+                <div class="ct-chart">
+                </div>
+>>>>>>> c04b38288b86dc6097db822dbe8060583776f9b9
             </div>
         </section>
 
@@ -57,7 +68,6 @@
     <p>Nous contacter</p>
     <p>...</p>
 </footer>
-
 <script type="text/javascript" src="../../../node_modules/chartist/dist/chartist.min.js"></script>
 <script type="text/javascript" src="../../../public/assets/js/scriptUser.js"></script>
 

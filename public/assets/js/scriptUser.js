@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // replace 'ct-chart' by the class given in index.html
     const entryElements = document.getElementsByClassName('ct-chart');
 
     let arrayData = new Array(3);
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     arrayData[1] = [];
     arrayData[2] = []
 
-    for(let i = 0; i < entryElements.length; i++){
+    for (let i = 0; i < entryElements.length; i++) {
         arrayData[0][i] = entryElements[i].getAttribute("data-date");
         arrayData[1][i] = entryElements[i].getAttribute("data-conso");
         arrayData[2][i] = i;

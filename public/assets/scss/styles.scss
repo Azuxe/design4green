@@ -63,7 +63,7 @@
 
 	.main_content {
 		display: flex;
-		width: 95%;
+		// width: 95%;
 
 		.info_container {
 			display: inherit;
@@ -91,10 +91,38 @@
                 }
             }
         }
+
+        .graphs_container{
+            display: flex;
+            flex-direction: column;
+            width: 75%;
+            padding: 0 15px;
+
+            border: 1px solid red;
+
+            .toggleBtn{
+                width: 250px;
+            }
+
+            .grapheConsommationMaison{
+                display: flex;
+                width: 100%;
+
+                .hiddenValues, .hiddenValues2{
+                    display: none;
+                }
+                
+                .ct-chart{
+                    // height: 50vh;
+                    // width: fit-content;
+                }
+            }
+        }
     }
     
     @media only screen and (max-width: 600px) {
         align-items: center;
+        padding: 40px 20px;
 
         .main_content {
             flex-direction: column;

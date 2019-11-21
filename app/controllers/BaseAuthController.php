@@ -30,7 +30,8 @@ class BaseAuthController extends \Ubiquity\controllers\auth\AuthController
 		if (URequest::isPost()) {
 			$username = URequest::post($this->_getLoginInputName());
 			$password = URequest::post($this->_getPasswordInputName());
-			return DAO::uGetOne(Identifiant::class, "username=? and password= ?", false, [$username, $password]);
+			$user = DAO::uGetOne(Identifiant::class, "username=? and password= ?", false, [$username, $password]);
+			return $user;
 		}
 		return;
 	}

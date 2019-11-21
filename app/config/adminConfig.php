@@ -5,6 +5,7 @@ return array(
 	"display-cache-types"=>array(
 			"controllers",
 			"models",
+			"queries",
 			"annotations"
 			),
 	"maintenance"=>array(

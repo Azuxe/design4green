@@ -7,9 +7,10 @@ return array(
 			"serverName"=>"127.0.0.1",
 			"port"=>3306,
 			"user"=>"root",
-			"password"=>"",
+			"password"=>"root",
 			"options"=>array(),
-			"cache"=>false
+			"cache"=>false,
+			"wrapper"=>"Ubiquity\\db\\providers\\pdo\\PDOWrapper"
 			),
 	"sessionName"=>"s5dd54943eebf4",
 	"namespaces"=>array(),

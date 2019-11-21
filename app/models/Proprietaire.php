@@ -1,8 +1,5 @@
 <?php
 namespace models;
-/**
- * @table('proprietaire')
-*/
 class Proprietaire{
 	/**
 	 * @id

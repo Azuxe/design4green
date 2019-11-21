@@ -1,4 +1,32 @@
 <!--View associated to index action of ConsommationController controller -->
-<p>coucou c'est la conso</p>
-
 {{ _userInfo | raw }}
+{{ _userInfo }}
+<p>Les informations de mon logement</p>
+FoyerID : {{ logement.foyerID }}<br>
+Type : {{ logement.type }}<br>
+Pieces : {{ logement.pieces }}<br>
+Chauffage : {{ logement.chauffage }}<br>
+Annee de construction : {{ logement.annee_construction }}<br>
+Nombre de voie : {{ logement.nb_voie }}<br>
+Voie : {{ logement.voie }}<br>
+Code postal : {{ logement.code_postal }}<br>
+Ville : {{ logement.ville }}<br>
+
+<table>
+    <thead>
+        <th>
+            <td>Foyer</td>
+            <td>Date de relevé</td>
+            <td>Consommation (kwh)</td>
+        </th>
+    </thead>
+    <tbody>
+        {% for consommation in logement.consommations %}
+        <tr>
+            <td>{{consommation.foyerID}}</td>
+            <td>{{consommation.date_releve}}</td>
+            <td>{{consommation.kwh}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

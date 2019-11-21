@@ -17,33 +17,31 @@
             </div>
 
             <div class="info_content">
-                <h3>Propriétaire</h3>
-                <p id="name">Raphaël MARZAT</p>
-                <p id="company">La Rochelle Université</p>
+                <h3>Propriétaire :</h3>
+                <p id="name">{{logement.proprietaires.prenom}}{{logement.proprietaires.nom}}</p>
+                <p id="company">{{logement.proprietaires.societe}}</p>
                 <p id="city">{{ logement.ville }}</p>
 
                 <details>
                     <summary>Plus d'infos</summary>
-                    <p id="address"><strong>Adresse :</strong> {{ logement.nb_voie }} {{ logement.voie }},
-                        {{ logement.code_postal }}, {{ logement.ville }}</p>
+                    <p id="address"><strong>Adresse :</strong> <br/> {{ logement.nb_voie }} {{ logement.voie }},
+                        {{ logement.code_postal }} {{ logement.ville }}</p>
                     <p id="area"><strong>Surface :</strong> {{ logement.surface }}m² </p>
-                    <p id="roomNbr"><strong>Nombre de pièces :</strong>{{ logement.pieces }} </p>
+                    <p id="roomNbr"><strong>Nombre de pièces :</strong> {{ logement.pieces }} </p>
                     <p id="constructYear"><strong>Année de construction :</strong> {{ logement.annee_construction }}
                     </p>
-                    <p id="energyType"><strong>Type de Chauffage :</strong> {{ logement.chauffage }} </p>
+                    <p id="energyType"><strong>Type de chauffage :</strong> {{ logement.chauffage }} </p>
                 </details>
-
             </div>
         </section>
 
         <!-- GRAPH PART -->
         <section class="graphs_container">
             <!-- <h2>MA CONSOMMATION</h2> -->
-            <button class="toggleBtn">ToggleButton (Graph/Table)</button>
+            <button class="toggleBtn">Afficher un Tableau</button>
             <div id="grapheConsommationMaison">
-
-                <form class="hiddenValues" data-consos="{{logement.consommations | join(', ')}}" data-dates="{{dates | join(', ')}}">
-
+                <form class="hiddenValues" data-consos="{{logement.consommations | join(', ')}}" data-dates="{{dates | join(', ')}}"></form>
+                <p>En kwh :</p>
                 <div class="ct-chart">
                 </div>
             </div>

@@ -6,17 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
     //DOM-Elements
     let grapheConsommationMaison = document.getElementById("grapheConsommationMaison");
     let entryElements = document.getElementsByClassName('hiddenValues');
-   
+
     //var 
     let arrayData = new Array(2);
 
     displayGraph();
-    document.getElementsByClassName("toggleBtn")[0].addEventListener("click", toggleTable);
+    let toggleBtn = document.getElementsByClassName('toggleBtn')[0];
+    toggleBtn.addEventListener("click", toggleTable);
 
-    function displayGraph(){
+    function displayGraph() {
         arrayData[0] = entryElements[0].getAttribute("data-dates").split(', ');
         arrayData[1] = entryElements[0].getAttribute("data-consos").split(', ');
-    
+
         //Displaying the chart
         Chartist.Line('.ct-chart', {
             labels: arrayData[0],
@@ -26,18 +27,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function toggleTable(){
-        if(!isTableCreated){
+    function toggleTable() {
+      
+        if (!isTableCreated) {
             createTable();
         }
 
         let table = document.getElementById("consoTable")
 
-        if(isGraphDisplayed){
+        if (isGraphDisplayed) {
+            toggleBtn.innerHTML = "Afficher un Graphe";
             isGraphDisplayed = false;
             grapheConsommationMaison.style.display = "none";
             table.style.display = "block";
-        }else{
+        } else {
+            toggleBtn.innerHTML = "Afficher un Tableau";
             isGraphDisplayed = true;
             grapheConsommationMaison.style.display = "flex";
             table.style.display = "none";
@@ -52,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let thDate = document.createElement("th");
         let thDateContent = document.createTextNode("Date");
         let thConso = document.createElement("th");
-        let thConsoContent = document.createTextNode("Consommation");
+        let thConsoContent = document.createTextNode("Consommation (kwh)");
 
         thConso.append(thConsoContent);
         thDate.append(thDateContent);
@@ -64,15 +68,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         for (let i = 0; i < arrayData[0].length; i++) {
             let tr = document.createElement("tr");
-            let td = document.createElement("td");
+            let tdDate = document.createElement("td");
+            let tdConso = document.createElement("td");
 
-            let tdDate = document.createTextNode(arrayData[0][i]);
-            let tdConso = document.createTextNode(arrayData[1][i]);
+            let tdDateContent = document.createTextNode(arrayData[0][i]);
+            let tdConsoContent = document.createTextNode(arrayData[1][i]);
 
-            td.append(tdDate);
-            td.append(tdConso);
+            tdDate.append(tdDateContent);
+            tdConso.append(tdConsoContent);
 
-            tr.append(td);
+            tr.append(tdDate);
+            tr.append(tdConso);
 
             table.append(tr);
         }

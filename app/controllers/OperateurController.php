@@ -38,6 +38,38 @@ class OperateurController extends ControllerBase{
 			$foyer->setLocataires($locataire);
 			$foyer->setIdentifiants($identifiant);
 		}
+
 		$this->loadView("OperateurController/index.html",['foyers' => $foyers]);
 	}
+
+	/**
+	 * @Route("operateur/{pageNum}/{countPerPage}")
+	 */
+	public function index5($pageNum,$countPerPage){
+		$foyers=DAO::paginate(Foyer::class,$pageNum,$countPerPage);
+		$res = [];
+		foreach($foyers as $foyer){
+			$proprietaire = DAO::getOne(Proprietaire::class,$foyer->getFoyerID(),false);
+			$locataire = DAO::getOne(Locataire::class,$foyer->getFoyerID(),false);
+			$identifiant = DAO::getOne(Identifiant::class,$foyer->getFoyerID(),false);
+			$consommations=DAO::uGetAll(Consommation::class,"foyer.foyerID=?",false,["A"]);
+			$json_foyer = json_decode(json_encode($foyer),true);
+			$json_foyer["consommations"] = $consommations;	
+			$json_foyer["identifiants"] = $identifiant;	
+			$json_foyer["locataires"] = $locataire;	
+			$json_foyer["proprietaires"] = $proprietaire;	
+			array_push($res,$json_foyer);
+		}
+		echo "<i>" . json_encode($res) . "<i>";
+	}
 }
+
+
+// RESTE A FAIRE
+// GESTION DE LA PAGINATION / Filtre
+// CREATION COMPTE
+// MAIL RESET + MAIL CONFIRMATION
+// SERVEUR
+// NETTOYAGE
+//
+//

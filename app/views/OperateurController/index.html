@@ -1,38 +1,131 @@
 <!--View associated to index action of OperateurController controller -->
-{{ _userInfo | raw }}
-
-Liste des habitations :
-
+{{ _userInfo | raw }} Liste des habitations
+<select id="nb_Element" onchange="test()">
+  <option value="1">1</option>
+  <option value="5">5</option>
+  <option value="10">10</option>
+</select>
 <table>
-        <thead>
-            <th>Foyer</th>
-            <th>Type</th>
-            <th>Pieces</th>
-            <th>Chauffage</th>
-            <th>Annee de construction</th>
-            <th>N° voie</th>
-            <th>Voie</th>
-            <th>Code postal</th>
-            <th>Ville</th>
-            <th>Proprietaire</th>
-            <th>Locataire</th>
-        </thead>
-        <tbody>
-            {% for foyer in foyers %}
-            <tr>
-                <td>{{foyer.foyerID}}</td>
-                <td>{{foyer.type}}</td>
-                <td>{{foyer.pieces}}</td>
-                <td>{{foyer.chauffage}}</td>
-                <td>{{foyer.annee_construction}}</td>
-                <td>{{foyer.nb_voie}}</td>
-                <td>{{foyer.voie}}</td>
-                <td>{{foyer.code_postal}}</td>
-                <td>{{foyer.ville}}</td>
-                <td>{{foyer.proprietaires.nom}} {{foyer.proprietaires.prenom}}</td>
-                <td>{{foyer.locataires.nom}} {{foyer.locataires.prenom}}</td>
-                <td></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+  <thead>
+    <th>Foyer</th>
+    <th>Type</th>
+    <th>Pieces</th>
+    <th>Chauffage</th>
+    <th>Annee de construction</th>
+    <th>N° voie</th>
+    <th>Voie</th>
+    <th>Code postal</th>
+    <th>Ville</th>
+    <th>Proprietaire</th>
+    <th>Locataire</th>
+  </thead>
+  <tbody id="content"></tbody>
+</table>
+<button onclick="pagePrecedente()">Page précèdente</button>
+<button onclick="pageSuivante()">Page suivante</button>
+
+
+<script>
+  var page_actuelle = 1;
+  var nb_element = 1;
+  var fin_donnees = false;
+  recuperationDonnees();
+
+  function pageSuivante() {
+    if (!fin_donnees) {
+      page_actuelle += 1;
+      recuperationDonnees();
+    }
+  }
+
+  function pagePrecedente() {
+    if (page_actuelle > 1) {
+      page_actuelle -= 1;
+      recuperationDonnees();
+    }
+  }
+
+  function recuperationDonnees() {
+    const Http = new XMLHttpRequest();
+    console.log(nb_element);
+    const url =
+      "http://127.0.0.1:8090/operateur/" + page_actuelle + "/" + nb_element;
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange = e => {
+      let monjson = JSON.parse(
+        Http.responseText
+          .match("<i>.*<i>")[0]
+          .replace("<i>", "")
+          .replace("<i>", "")
+      );
+
+      if (monjson.length < nb_element) {
+        fin_donnees = true;
+        
+      } else {
+        fin_donnees = false;
+      }
+      
+      monjson.forEach(element => {
+        foyer = element._rest;
+        proprietaires = element.proprietaires._rest;
+        locataires = element.locataires._rest;
+        consommations = element.consommations;
+        consommations_clean = [];
+        Object.keys(consommations).forEach(function(key) {
+          consommations_clean.push(consommations[key]);
+        });
+        consommations = [];
+        consommations_clean.forEach(element => {
+          consommations.push(element._rest)
+        });
+
+        r = document.createElement("tr");
+
+        r +=
+          "<td>" +
+          foyer.foyerID +
+          "</td>" +
+          "<td>" +
+          foyer.type +
+          "</td>" +
+          "<td>" +
+          foyer.pieces +
+          "</td>" +
+          "<td>" +
+          foyer.chauffage +
+          "</td>" +
+          "<td>" +
+          foyer.annee_construction +
+          "</td>" +
+          "<td>" +
+          foyer.nb_voie +
+          "</td>" +
+          "<td>" +
+          foyer.voie +
+          "</td>" +
+          "<td>" +
+          foyer.code_postal +
+          "</td>" +
+          "<td>" +
+          foyer.ville +
+          "</td>" +
+          "<td>" +
+          proprietaires.nom +
+          " " +
+          proprietaires.prenom +
+          "</td>" +
+          "<td>" +
+          locataires.nom +
+          " " +
+          locataires.prenom +
+          "</td>" + "<td>"+consommations+"</td>"+
+          
+        ("</tr>");
+        document.getElementById("content").innerHTML = r;
+      });
+    };
+  }
+</script>

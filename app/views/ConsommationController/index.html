@@ -40,7 +40,7 @@
         <section>
             <!-- <h2>MA CONSOMMATION</h2> -->
             <button>ToggleButton (Graph/Table) to be implemented</button>
-            <div class="grapheConsommationMaison">
+            <div id="grapheConsommationMaison">
                     {% for conso in logement.consommations %}
                     <div class="ct-chart" data-conso="{{ conso.kwh }}" data-date="{{ conso.date_releve }}">
                     </div>

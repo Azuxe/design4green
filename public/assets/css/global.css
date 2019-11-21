@@ -8,15 +8,16 @@
 header{
     box-shadow: 0px -4px 25px 0px rgba(0,0,0,0.75);
     background-color: #121212;
+    width: 100%;
 }
 
 body{
-
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     color: #DDD;
     background-color: #252525;
     text-align: center;
+
 
 }
 
@@ -37,9 +38,10 @@ hr{
 }
 
 footer {
+    position: relative;
     background-color: #121212;
-    position: absolute;
     bottom: 0;
+    left:0;
     width: 100%;
     padding-bottom: 30px;
     padding-top : 30px;

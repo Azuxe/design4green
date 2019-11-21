@@ -1,0 +1,22 @@
+{
+  "name": "design4green",
+  "version": "1.0.0",
+  "description": "Design 4 Green Hackathon App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azuxe/design4green.git"
+  },
+  "author": "Subvert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azuxe/design4green/issues"
+  },
+  "homepage": "https://github.com/Azuxe/design4green#readme",
+  "dependencies": {
+    "chartist": "^0.11.4"
+  }
+}

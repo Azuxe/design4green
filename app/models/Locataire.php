@@ -1,5 +1,8 @@
 <?php
 namespace models;
+/**
+ * @table('locataire')
+*/
 class Locataire{
 	/**
 	 * @id

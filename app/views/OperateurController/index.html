@@ -31,6 +31,11 @@
   var fin_donnees = false;
   recuperationDonnees();
 
+  function test() {
+    nb_element = document.getElementById("nb_Element").value
+    recuperationDonnees()
+  }
+
   function pageSuivante() {
     if (!fin_donnees) {
       page_actuelle += 1;
@@ -47,13 +52,15 @@
 
   function recuperationDonnees() {
     const Http = new XMLHttpRequest();
-    console.log(nb_element);
     const url =
       "http://127.0.0.1:8090/operateur/" + page_actuelle + "/" + nb_element;
     Http.open("GET", url);
     Http.send();
 
     Http.onreadystatechange = e => {
+
+      document.getElementById("content").innerHTML = "";
+
       let monjson = JSON.parse(
         Http.responseText
           .match("<i>.*<i>")[0]
@@ -121,10 +128,10 @@
           locataires.nom +
           " " +
           locataires.prenom +
-          "</td>" + "<td>"+consommations+"</td>"+
+          "</td>"
           
-        ("</tr>");
-        document.getElementById("content").innerHTML = r;
+        "</tr>";
+        document.getElementById("content").innerHTML += r;
       });
     };
   }

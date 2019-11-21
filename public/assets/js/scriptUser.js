@@ -1,29 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
+    //States
     let isGraphDisplayed = true;
     let isTableCreated = false;
 
+    //DOM-Elements
     let grapheConsommationMaison = document.getElementById("grapheConsommationMaison");
-
-    // replace 'ct-chart' by the class given in index.html
-    const entryElements = document.getElementsByClassName('hiddenValues');
-
+    let entryElements = document.getElementsByClassName('hiddenValues');
+   
+    //var 
     let arrayData = new Array(2);
 
-    arrayData[0] = entryElements[0].getAttribute("data-dates").split(', ');
-    arrayData[1] = entryElements[0].getAttribute("data-consos").split(', ');
-
-    //Displaying the chart
-    Chartist.Line('.ct-chart', {
-        labels: arrayData[0],
-        series: [
-            arrayData[1]
-        ]
-    });
-
+    displayGraph();
     document.getElementsByClassName("toggleBtn")[0].addEventListener("click", toggleTable);
 
+    function displayGraph(){
+        arrayData[0] = entryElements[0].getAttribute("data-dates").split(', ');
+        arrayData[1] = entryElements[0].getAttribute("data-consos").split(', ');
+    
+        //Displaying the chart
+        Chartist.Line('.ct-chart', {
+            labels: arrayData[0],
+            series: [
+                arrayData[1]
+            ]
+        });
+    }
+
     function toggleTable(){
-        console.log("Toggle between table and graph")
         if(!isTableCreated){
             createTable();
         }
@@ -43,8 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function createTable() {
-        console.log("Creating table");
-        //Displaying the grid
         let table = document.createElement("table");
         table.setAttribute("id", "consoTable")
         let tr = document.createElement("tr");

@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
 <head>
-{% block header %}
 	<base href="{{config["siteUrl"]}}">
 	<meta charset="UTF-8">
-	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	<title>Design4Green</title>
-{% endblock %}
-{% block css %}
-	{{ css('https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.1/dist/semantic.min.css') }}
-	{{css('css/style.css') | raw}}
-{% endblock %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+	<link rel="stylesheet" href="..\..\..\node_modules\chartist\dist\chartist.min.css">
+	{% block header %}
+	{% endblock %}
+	{% block css %}
+	{{css('css/reset.css') | raw}}
+	{{css('css/styles.css') | raw}}
+	{{css('css/global.css') | raw}}
+	{{css('css/styleUtilisateur.css') | raw}}
+	{% endblock %}
 </head>
+
 <body>
-{% block head %}
-{% endblock %}
+	<!-- {% block head %}
+	{% endblock %} -->
+
+	<header class="top_header">
+		<img src="../../../public/assets/img/logo_subvert_100px.png" alt="Logo" class="header_logo">
+		{{ _userInfo | raw}}
+	</header>
+
+	{% block body %}
+	{% endblock %}

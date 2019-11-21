@@ -38,6 +38,10 @@ class ConsommationController extends ControllerBase
 		$foyer->setConsommations($consommations);
 		$foyer->setLocataires($locataire);
 		$foyer->setProprietaires($proprietaire);
-		$this->loadView("ConsommationController/index.html", ["logement" => $foyer]);
+		$dates = [];
+		foreach($consommations as $conso){
+			$dates[] = $conso->getDate_releve();
+		}
+		$this->loadView("ConsommationController/index.html", ["logement" => $foyer, 'dates' => $dates]);
 	}
 }

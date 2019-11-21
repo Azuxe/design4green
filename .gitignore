@@ -2,3 +2,4 @@
 vendor
 # .ubiquity
 app/cache
+node_modules

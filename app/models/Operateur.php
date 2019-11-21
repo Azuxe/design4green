@@ -1,5 +1,8 @@
 <?php
 namespace models;
+/**
+ * @table('operateur')
+*/
 class Operateur{
 	/**
 	 * @id

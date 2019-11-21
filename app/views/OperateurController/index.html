@@ -1,0 +1,38 @@
+<!--View associated to index action of OperateurController controller -->
+{{ _userInfo | raw }}
+
+Liste des habitations :
+
+<table>
+        <thead>
+            <th>Foyer</th>
+            <th>Type</th>
+            <th>Pieces</th>
+            <th>Chauffage</th>
+            <th>Annee de construction</th>
+            <th>N° voie</th>
+            <th>Voie</th>
+            <th>Code postal</th>
+            <th>Ville</th>
+            <th>Proprietaire</th>
+            <th>Locataire</th>
+        </thead>
+        <tbody>
+            {% for foyer in foyers %}
+            <tr>
+                <td>{{foyer.foyerID}}</td>
+                <td>{{foyer.type}}</td>
+                <td>{{foyer.pieces}}</td>
+                <td>{{foyer.chauffage}}</td>
+                <td>{{foyer.annee_construction}}</td>
+                <td>{{foyer.nb_voie}}</td>
+                <td>{{foyer.voie}}</td>
+                <td>{{foyer.code_postal}}</td>
+                <td>{{foyer.ville}}</td>
+                <td>{{foyer.proprietaires.nom}} {{foyer.proprietaires.prenom}}</td>
+                <td>{{foyer.locataires.nom}} {{foyer.locataires.prenom}}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>

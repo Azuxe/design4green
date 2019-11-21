@@ -8,7 +8,8 @@ use controllers\PersoAuthController;
 use Ubiquity\orm\DAO;
 use models\Foyer;
 use models\Consommation;
-use models\Identifiant;
+use models\Locataire;
+use models\Proprietaire;
 use Ubiquity\utils\http\USession;
 
 
@@ -29,9 +30,14 @@ class ConsommationController extends ControllerBase
 	 */
 	public function index()
 	{
-		$foyer=DAO::getOne(Foyer::class,USession::get("activeUser")->getFoyerID(),false);
-		$consommations=DAO::uGetAll(Consommation::class,"foyer.foyerID=?",false,["A"]);
+		$foyer_id = USession::get("activeUser")->getFoyerID();
+		$foyer=DAO::getOne(Foyer::class,$foyer_id,false);
+		$consommations=DAO::uGetAll(Consommation::class,"foyer.foyerID=?",false,[$foyer_id]);
+		$proprietaire = DAO::getOne(Proprietaire::class,$foyer_id);
+		$locataire = DAO::getOne(Locataire::class,$foyer_id);
 		$foyer->setConsommations($consommations);
+		$foyer->setLocataires($locataire);
+		$foyer->setProprietaires($proprietaire);
 		$this->loadView("ConsommationController/index.html", ["logement" => $foyer]);
 	}
 }

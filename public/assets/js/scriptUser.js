@@ -1,19 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // replace 'ct-chart' by the class given in index.html
-    const entryElements = document.getElementsByClassName('ct-chart');
+    const entryElements = document.getElementsByClassName('hiddenValues');
 
-    let arrayData = new Array(3);
-    
-    arrayData[0] = [];
-    arrayData[1] = [];
-    arrayData[2] = []
+    let arrayData = new Array(2);
 
-    for (let i = 0; i < entryElements.length; i++) {
-        arrayData[0][i] = entryElements[i].getAttribute("data-date");
-        arrayData[1][i] = entryElements[i].getAttribute("data-conso");
-        arrayData[2][i] = i;
-    }
+    arrayData[0] = entryElements[0].getAttribute("data-dates").split(', ');
+    arrayData[1] = entryElements[0].getAttribute("data-consos").split(', ');
+
+    console.log(arrayData);
 
     //Displaying the chart
 

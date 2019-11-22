@@ -2,7 +2,7 @@ AddDefaultCharset UTF-8
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /Design4Green/
+	RewriteBase /
 	
 	RewriteCond %{REQUEST_FILENAME} !-f  
 	RewriteCond %{HTTP_ACCEPT} !(.*images.*)

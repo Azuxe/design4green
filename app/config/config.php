@@ -1,13 +1,13 @@
 <?php
 return array(
-	"siteUrl"=>"http://127.0.0.1:8090/",
+	"siteUrl"=>"http://51.83.40.255/",
 	"database"=>array(
 			"type"=>"mysql",
 			"dbName"=>"designforgreen",
 			"serverName"=>"127.0.0.1",
 			"port"=>3306,
-			"user"=>"root",
-			"password"=>"root",
+			"user"=>"newuser",
+			"password"=>"password",
 			"options"=>array(),
 			"cache"=>false,
 			"wrapper"=>"Ubiquity\\db\\providers\\pdo\\PDOWrapper"

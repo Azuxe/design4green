@@ -1,8 +1,5 @@
 <?php
 namespace models;
-/**
- * @table('consommation')
-*/
 class Consommation{
 	/**
 	 * @id

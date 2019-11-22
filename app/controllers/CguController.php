@@ -11,12 +11,6 @@ use controllers\PersoAuthController;
  **/
 class CguController extends ControllerBase{
 
-	use WithAuthTrait;
-	protected function getAuthController(): AuthController
-	{
-		return new PersoAuthController();
-	}
-
 	/**
 	 * @Route("cgu")
 	 */

@@ -11,7 +11,7 @@ use Ubiquity\orm\DAO;
 /**
  * Auth Controller BaseAuthController
  **/
-class OperateurH extends \Ubiquity\controllers\auth\AuthController
+class OperateurAuthController extends \Ubiquity\controllers\auth\AuthController
 {
 
 	protected function onConnect($connected)

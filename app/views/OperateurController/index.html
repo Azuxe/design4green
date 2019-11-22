@@ -1,35 +1,41 @@
 <!--View associated to index action of OperateurController controller -->
-{{ _userInfo | raw }} Liste des habitations
-<select id="nb_Element" onchange="test()">
-  <option value="1">1</option>
-  <option value="5">5</option>
-  <option value="10">10</option>
-</select>
-<table>
-  <thead>
-    <th>Foyer</th>
-    <th>Type</th>
-    <th>Pieces</th>
-    <th>Chauffage</th>
-    <th>Annee de construction</th>
-    <th>N° voie</th>
-    <th>Voie</th>
-    <th>Code postal</th>
-    <th>Ville</th>
-    <th>Proprietaire</th>
-    <th>Locataire</th>
-  </thead>
-  <tbody id="content"></tbody>
-</table>
-<button onclick="pagePrecedente()">Page précèdente</button>
-<button onclick="pageSuivante()">Page suivante</button>
-
+<div class="page_operateur">
+  Liste des habitations
+  <select id="nb_Element" onchange="test()">
+    <option value="1">1</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+  </select>
+  <table id="consoTable">
+    <thead>
+      <th>Foyer</th>
+      <th>Type</th>
+      <th>Pieces</th>
+      <th>Chauffage</th>
+      <th>Annee de construction</th>
+      <th>N° voie</th>
+      <th>Voie</th>
+      <th>Code postal</th>
+      <th>Ville</th>
+      <th>Proprietaire</th>
+      <th>Locataire</th>
+    </thead>
+    <tbody id="content"></tbody>
+  </table>
+  <button onclick="pagePrecedente()">Page précèdente</button>
+  <button onclick="pageSuivante()">Page suivante</button>
+</div>
 
 <script>
   var page_actuelle = 1;
   var nb_element = 1;
   var fin_donnees = false;
   recuperationDonnees();
+
+  function test() {
+    nb_element = document.getElementById("nb_Element").value
+    recuperationDonnees()
+  }
 
   function pageSuivante() {
     if (!fin_donnees) {
@@ -47,13 +53,16 @@
 
   function recuperationDonnees() {
     const Http = new XMLHttpRequest();
-    console.log(nb_element);
     const url =
       "http://127.0.0.1:8090/operateur/" + page_actuelle + "/" + nb_element;
     Http.open("GET", url);
     Http.send();
 
     Http.onreadystatechange = e => {
+
+      document.getElementById("content").innerHTML = "";
+      tbody = document.getElementById("content");
+
       let monjson = JSON.parse(
         Http.responseText
           .match("<i>.*<i>")[0]
@@ -63,18 +72,18 @@
 
       if (monjson.length < nb_element) {
         fin_donnees = true;
-        
+
       } else {
         fin_donnees = false;
       }
-      
+
       monjson.forEach(element => {
         foyer = element._rest;
         proprietaires = element.proprietaires._rest;
         locataires = element.locataires._rest;
         consommations = element.consommations;
         consommations_clean = [];
-        Object.keys(consommations).forEach(function(key) {
+        Object.keys(consommations).forEach(function (key) {
           consommations_clean.push(consommations[key]);
         });
         consommations = [];
@@ -82,49 +91,102 @@
           consommations.push(element._rest)
         });
 
-        r = document.createElement("tr");
+        let tr = document.createElement("tr");
+        
+        let tdId = document.createElement("td");
+        let tdIdContent = document.createTextNode(foyer.foyerID);
+        tdId.append(tdIdContent);
 
-        r +=
-          "<td>" +
-          foyer.foyerID +
-          "</td>" +
-          "<td>" +
-          foyer.type +
-          "</td>" +
-          "<td>" +
-          foyer.pieces +
-          "</td>" +
-          "<td>" +
-          foyer.chauffage +
-          "</td>" +
-          "<td>" +
-          foyer.annee_construction +
-          "</td>" +
-          "<td>" +
-          foyer.nb_voie +
-          "</td>" +
-          "<td>" +
-          foyer.voie +
-          "</td>" +
-          "<td>" +
-          foyer.code_postal +
-          "</td>" +
-          "<td>" +
-          foyer.ville +
-          "</td>" +
-          "<td>" +
-          proprietaires.nom +
-          " " +
-          proprietaires.prenom +
-          "</td>" +
-          "<td>" +
-          locataires.nom +
-          " " +
-          locataires.prenom +
-          "</td>" + "<td>"+consommations+"</td>"+
-          
-        ("</tr>");
-        document.getElementById("content").innerHTML = r;
+        let tdType = document.createElement("td");
+        let tdTypeContent = document.createTextNode(foyer.type);
+        tdType.append(tdTypeContent);
+
+        let tdPiece = document.createElement("td");
+        let tdPieceContent = document.createTextNode(foyer.pieces);
+        tdPiece.append(tdPieceContent);
+
+        let tdChauf = document.createElement("td");
+        let tdChaufContent = document.createTextNode(foyer.chauffage);
+        tdChauf.append(tdChaufContent);
+
+        let tdAnn = document.createElement("td");
+        let tdAnnContent = document.createTextNode(foyer.annee_construction);
+        tdAnn.append(tdAnnContent);
+
+        let tdNbVoie = document.createElement("td");
+        let tdNbVoieContent = document.createTextNode(foyer.nb_voie);
+        tdNbVoie.append(tdNbVoieContent);
+        let tdVoie = document.createElement("td");
+        let tdVoieContent = document.createTextNode(foyer.voie);
+        tdVoie.append(tdVoieContent);
+        let tdCP = document.createElement("td");
+        let tdCPContent = document.createTextNode(foyer.code_postal);
+        tdCP.append(tdCPContent);
+        let tdVille = document.createElement("td");
+        let tdVilleContent = document.createTextNode(foyer.ville);
+        tdVille.append(tdVilleContent);
+        let tdProp = document.createElement("td");
+        let tdPropContent = document.createTextNode("" + proprietaires.nom + " " + proprietaires.prenom);
+        tdProp.append(tdPropContent);
+        let tdLoc = document.createElement("td");
+        let tdLocContent = document.createTextNode("" + locataires.nom + " " + locataires.prenom);
+        tdLoc.append(tdLocContent);
+
+        tr.append(tdId);
+        tr.append(tdType);
+        tr.append(tdPiece);
+        tr.append(tdChauf);
+        tr.append(tdAnn);
+        tr.append(tdNbVoie);
+        tr.append(tdVoie);
+        tr.append(tdCP);
+        tr.append(tdVille);
+        tr.append(tdProp);
+        tr.append(tdLoc);
+       
+        tbody.append(tr);
+
+        // r +=
+        //   "<td>" +
+        //   foyer.foyerID +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.type +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.pieces +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.chauffage +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.annee_construction +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.nb_voie +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.voie +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.code_postal +
+        //   "</td>" +
+        //   "<td>" +
+        //   foyer.ville +
+        //   "</td>" +
+        //   "<td>" +
+        //   proprietaires.nom +
+        //   " " +
+        //   proprietaires.prenom +
+        //   "</td>" +
+        //   "<td>" +
+        //   locataires.nom +
+        //   " " +
+        //   locataires.prenom +
+        //   "</td>"
+
+        // "</tr>";
+        // document.getElementById("content").innerHTML += r;
       });
     };
   }

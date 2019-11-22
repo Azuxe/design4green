@@ -4,26 +4,8 @@ body{
     background-color: #252525;
     margin: 0;
 }
-
-/* h1{
-    font-size: 1.3em;
-    font-weight: bold;
-
-    border-left: solid;
-    border-right: solid;
-
-    margin-top: 40px;
-    margin-left: 15px;
-    margin-right: 15px;
+.ui.container{
+    margin: 0 !important;
+    width: 100% !important;
 }
 
-hr{
-    width: 80%; 
-}*/
-
-footer {
-    border: 1px solid #000;
-    background-color: #121212;
-    width: 100%;
-    padding: 10px;
-  }

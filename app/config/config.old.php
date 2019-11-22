@@ -21,11 +21,11 @@ return array(
 	"test"=>false,
 	"debug"=>true,
 	"logger"=>function (){return new \Ubiquity\log\libraries\UMonolog("Design4Green",\Monolog\Logger::INFO);},
-	"di"=>array(
-			"@exec"=>array("jquery"=>function ($controller){
-						return \Ubiquity\core\Framework::diSemantic($controller);
-					})
-			),
+	// "di"=>array(
+	// 		"@exec"=>array("jquery"=>function ($controller){
+	// 					return \Ubiquity\core\Framework::diSemantic($controller);
+	// 				})
+	// 		),
 	"cache"=>array(
 			"directory"=>"cache/",
 			"system"=>"Ubiquity\\cache\\system\\ArrayCache",

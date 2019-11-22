@@ -17,8 +17,7 @@ use Ubiquity\utils\http\USession;
  * Controller ConsommationController
  **/
 class ConsommationController extends ControllerBase
-{
-
+{	
 	use WithAuthTrait;
 	protected function getAuthController(): AuthController
 	{
@@ -31,15 +30,15 @@ class ConsommationController extends ControllerBase
 	public function index()
 	{
 		$foyer_id = USession::get("activeUser")->getFoyerID();
-		$foyer=DAO::getOne(Foyer::class,$foyer_id,false);
-		$consommations=DAO::uGetAll(Consommation::class,"foyer.foyerID=?",false,[$foyer_id]);
-		$proprietaire = DAO::getOne(Proprietaire::class,$foyer_id);
-		$locataire = DAO::getOne(Locataire::class,$foyer_id);
+		$foyer = DAO::getOne(Foyer::class, $foyer_id, false);
+		$consommations = DAO::uGetAll(Consommation::class, "foyer.foyerID=?", false, [$foyer_id]);
+		$proprietaire = DAO::getOne(Proprietaire::class, $foyer_id);
+		$locataire = DAO::getOne(Locataire::class, $foyer_id);
 		$foyer->setConsommations($consommations);
 		$foyer->setLocataires($locataire);
 		$foyer->setProprietaires($proprietaire);
 		$dates = [];
-		foreach($consommations as $conso){
+		foreach ($consommations as $conso) {
 			$dates[] = $conso->getDate_releve();
 		}
 		$this->loadView("ConsommationController/index.html", ["logement" => $foyer, 'dates' => $dates]);
